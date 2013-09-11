@@ -206,8 +206,6 @@
 		checkCapabilities();
 
 		if( !features.transforms2d && !features.transforms3d ) {
-			document.body.setAttribute( 'class', 'no-transforms' );
-
 			// Since JS won't be running any further, we need to load all
 			// images that were intended to lazy load now
 			var images = document.getElementsByTagName( 'img' );
@@ -223,6 +221,9 @@
 			// using JavaScript to control the presentation
 			return;
 		}
+
+		// Remove the no-transforms class now
+		document.body.removeAttribute( 'class' );
 
 		// Force a layout when the whole page, incl fonts, has loaded
 		window.addEventListener( 'load', layout, false );
